@@ -14,3 +14,16 @@ Pakage
 -[JSON Web Tokens JWT](https://jwt.io/)
 
 -[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+
+
+express app deploy on vercel
+
+[deploy an Express API to Vercel](https://shadowsmith.com/thoughts/how-to-deploy-an-express-api-to-vercel)
+
+thaka vercei ar jo no  vercel.json file create kora 
+require("dotenv").config();
+[dotenv](https://www.npmjs.com/package/dotenv)
+npm i dotenv
+
+
+[Log in to Vercel](https://vercel.com/login?next=%2Fdashboard)

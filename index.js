@@ -1,11 +1,14 @@
+require("dotenv").config();
 const express = require("express");
+
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const app = express();
 const bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
 
 const cors = require("cors");
-const port = 5000;
+
+const port = process.env.PORT;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -13,6 +16,7 @@ app.use(express.json());
 
 
 // jwt use ===========
+
 
 function createToken(user) {
 
@@ -51,12 +55,8 @@ function verifyToken(req,res,next) {
 //================
 
 
+const uri = process.env.DATABASE_URL;
 
-
-const uri =
-  "mongodb+srv://izazahmedemon018:VJxlIwPncralbAi6@cluster0.843jjic.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
