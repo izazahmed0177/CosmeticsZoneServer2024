@@ -1,12 +1,14 @@
 const express = require("express");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const app = express();
+const bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
 
 const cors = require("cors");
 const port = 5000;
 
 app.use(cors());
+app.use(bodyParser.json());
 app.use(express.json());
 
 
@@ -193,6 +195,48 @@ async function run() {
         res.send(result);
       });
 
+      /////////////
+
+      ///////
+
+
+      app.get('/categoryCosmetics/:category', async (req, res) => {
+
+        const category = req.params.category;
+        // const userData = req.body;
+
+
+
+        // const id = req.params.id;
+        let query = {category: category };
+
+        let categoryCosmetics=cosmeticsZoneCosmeticsCollection.find(query) 
+        const allcategory=await categoryCosmetics.toArray();           
+
+        // const booking = await booksCollection.find(query);
+        res.send(allcategory);
+    })
+
+
+    /////////////////////
+
+app.get('/search', async (req, res) => {
+  const { query } = req.query; // Get search query from request
+  try {
+    const results = await cosmeticsZoneCosmeticsCollection.find({
+      $or: [
+        { cosmeticsName: { $regex: query, $options: 'i' } },
+        { title: { $regex: query, $options: 'i' } },
+        { brand: { $regex: query, $options: 'i' } },
+        { category: { $regex: query, $options: 'i' } },
+        { cosmeticsDetails: { $regex: query, $options: 'i' } }
+      ]
+    }).toArray();
+    res.json(results);
+  } catch (error) {
+    res.status(500).send(error.toString());
+  }
+});
   
 
 
