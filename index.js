@@ -75,7 +75,7 @@ async function run() {
       "cosmeticsZoneUserCollection"
     );
     
-    const cosmeticsZoneCatagoryCollection = cosmeticsZoneuserDB.collection(
+    const cosmeticsZoneCategoryCollection = cosmeticsZoneuserDB.collection(
       "cosmeticsCatagory"
     );
 
@@ -136,8 +136,8 @@ async function run() {
     //catagory get  
 
     app.get("/catagory", async (req, res) => {
-      const catagoryData = cosmeticsZoneCatagoryCollection.find();
-      const result = await catagoryData.toArray();
+      const categoryData = cosmeticsZoneCategoryCollection.find();
+      const result = await categoryData.toArray();
       res.send(result);
     });
 
