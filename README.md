@@ -27,3 +27,7 @@ npm i dotenv
 
 
 [Log in to Vercel](https://vercel.com/login?next=%2Fdashboard)
+
+
+server deploy
+[render](https://render.com/)
